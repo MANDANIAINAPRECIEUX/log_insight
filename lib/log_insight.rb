@@ -13,7 +13,9 @@ class LogInsight
     status_counts = Hash.new(0)
     error_count = 0
 
-   
+    output_dir = "output"
+    Dir.mkdir(output_dir) unless Dir.exist?(output_dir)
+
     File.foreach(file_path) do |line|
       parts = line.split(" ")
       next if parts.size < 5  
@@ -26,7 +28,12 @@ class LogInsight
       next if filter_method && method != filter_method
       next if filter_route  && route  != filter_route
 
-     
+     output_file = File.join(output_dir, "#{method}.log")
+
+        File.open(output_file, "a") do |file|
+        file.puts line
+        end
+
       total_lines += 1
       method_counts[method] += 1
       status_counts[status] += 1
