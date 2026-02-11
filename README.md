@@ -1,0 +1,1 @@
+LogInsight est un outil CLI en Ruby que j'ai créé, permettant d’analyser des fichiers de logs HTTP, d’extraire des statistiques (méthodes, codes de statut, erreurs) et d’exporter les résultats en CSV et JSON.
